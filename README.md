@@ -1,2 +1,8 @@
-# pks-workshop-2019-aug
-Pivotal Container Service - First Contactセッションのハンズオン資料
+# Pivotal Container Serivce - First Contact 2019/08/30 - ハンズオン資料
+## 注意事項
+- 本資料は8/30当日のハンズオン向けの手順ならびに設定情報等を含みます。手順については再利用可能ですがハンズオン環境はセッション終了後に削除する為使えなくなります。
+- 参加者向けの情報ですので情報の共有はお控えください。
+## 事前準備
+- PKSのAPIに対してssh経由でアクセスする必要があります。Windows環境の場合にはGit for Windows ( https://gitforwindows.org/ )等を事前インストールしてください。
+## クライアントツールのインストール
+- 
