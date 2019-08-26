@@ -1,0 +1,8 @@
+---
+apiVersion: apps.pivotal.io/v1beta1
+kind: ClusterSink
+metadata:
+  name: papertrail-sink
+spec:
+  type: webhook
+  url: logs2.papertrailapp.com:53822
