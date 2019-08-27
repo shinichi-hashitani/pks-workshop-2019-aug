@@ -1,4 +1,16 @@
 # Pivotal Container Serivce - First Contact 2019/08/30 - ハンズオン資料
+## PKSへアクセス
+パスワードの抽出
+```
+export UAA_ADMIN_PASSWORD=$(cat ./${TS_G_ENV}.json | jq -r .pks_api.uaa_admin_password)
+
+echo $UAA_ADMIN_PASSWORD
+```
+ログイン
+```
+pks login -a api.pks.${TS_G_ENV}.cf-app.com -u admin -p ${UAA_ADMIN_PASSWORD} -k
+```
+
 ## Kubernetesクラスタの作成
 Kubernetesのクラスタはコマンドで作成できます。
 ```bash

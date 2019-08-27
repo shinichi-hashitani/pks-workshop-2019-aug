@@ -72,9 +72,12 @@ bosh -e alisoviejo -d service-instance_27f1d58c-04e7-4f32-8311-78ad68f8d6b5 logs
 bosh logs -d pivotal-container-service-47401a601da02a2b127c --follow
 ```
 
-##　Log Sink
+## Log Sink
 Cluster Sinkを作成
 ```bash
+pks create-sink cluster-1 --name papertrrail-sink syslog-tls://logs2.papertrailapp.com:53822
+
+# もしくはYAMLからCRDを生成
 cat > papertrail-sink.yml << 'EOF'
 ---
 apiVersion: apps.pivotal.io/v1beta1
@@ -87,9 +90,9 @@ spec:
   port: :53822
   enable_tls: false
 EOF
-# もしくはコマンドラインから直接
-pks create-sink cluster-1 --name papertrrail-sink syslog-tls://logs2.papertrailapp.com:53822
+kubeclt apply -f papertrail-sink.yml
 ```
+
 エラーが出た時のメモ
 ```
 # Pod内のコンテナをリストアップ
