@@ -75,7 +75,7 @@ bosh logs -d pivotal-container-service-47401a601da02a2b127c --follow
 ## Log Sink
 Cluster Sinkを作成
 ```bash
-pks create-sink cluster-1 --name papertrrail-sink syslog-tls://logs2.papertrailapp.com:53822
+pks create-sink cluster-1 --name papertrail-sink syslog-tls://logs2.papertrailapp.com:53822
 
 # もしくはYAMLからCRDを生成
 cat > papertrail-sink.yml << 'EOF'
