@@ -4,5 +4,8 @@ kind: ClusterSink
 metadata:
   name: papertrail-sink
 spec:
-  type: webhook
-  url: logs2.papertrailapp.com:53822
+  type: syslog
+  host: logs2.papertrailapp.com
+  port: 53822
+  enable_tls: true
+
