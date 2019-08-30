@@ -1,16 +1,27 @@
 # Pivotal Container Serivce - First Contact 2019/08/30 - ハンズオン資料
 ## Ops Manager(online)にアクセス
 Ops ManagerはPKSやPAS(Cloud Foundry)、その他関連パッケージを管理する為のオンラインシステムです。Ops Managerより新しいパッケージ（Tile）のインストール、設定変更及び反映を行うことが出来ます。
-- url: https://pcf.alisoviejo.cf-app.com
-- user: pivotalcf
-- password: afh20svxm3kfop09
+### Env 1 - arroyogrande
+- password: yrxve6v1k773ysjb
+- Ops Manager: https://pcf.arroyogrande.cf-app.com
+### Env 2 - santiago
+- password: hkw58onmnvd0j5xd
+- Ops Manager: https://pcf.santiago.cf-app.com
+### Env 3 - fowler
+- password: hkw58onmnvd0j5xd
+- Ops Manager: https://pcf.fowler.cf-app.com
+### Env 4 - gardengrove
+- password: gwhedm279p5rwn0c
+- Ops Manager: https://pcf.gardengrove.cf-app.com
 
 ## Ops Manager、BOSH Directorにコマンドラインからアクセス
 Ops ManagerはPKSのコンポーネントを管理する立場にあり、Ops Managerを経由すると各種コンポーネントへアクセス可能となります。\
 Ops Managerにアクセス:
 ```bash
 export TS_G_ENV=alisoviejo
-touch ./${TS_G_ENV}.priv && chmod 600 ${TS_G_ENV}.priv && echo "$(jq -r .ops_manager_private_key < ./${TS_G_ENV}.json)" > ${TS_G_ENV}.priv
+touch ./${TS_G_ENV}.priv && chmod 600 ${TS_G_ENV}.priv && \
+  echo "$(jq -r .ops_manager_private_key < ./config/${TS_G_ENV}.json)" \
+  > ${TS_G_ENV}.priv
 
 ssh -i ${TS_G_ENV}.priv ubuntu@pcf.${TS_G_ENV}.cf-app.com
 ```
