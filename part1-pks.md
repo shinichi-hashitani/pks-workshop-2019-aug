@@ -1,22 +1,15 @@
 # Pivotal Container Serivce - First Contact 2019/08/30 - ハンズオン資料
-## 環境一覧
-### Env 1 - arroyogrande
-- password: yrxve6v1k773ysjb
-- Ops Manager: https://pcf.arroyogrande.cf-app.com
-### Env 2 - santiago
-- password: hkw58onmnvd0j5xd
-- Ops Manager: https://pcf.santiago.cf-app.com
-### Env 3 - fowler
-- password: hkw58onmnvd0j5xd
-- Ops Manager: https://pcf.fowler.cf-app.com
-### Env 4 - gardengrove
-- password: gwhedm279p5rwn0c
-- Ops Manager: https://pcf.gardengrove.cf-app.com
 ## PKSへアクセス
+参加者皆さんに別の環境を用意しており、それぞれに名前が付いています。
+### Env 1 - arroyogrande
+### Env 2 - santiago
+### Env 3 - fowler
+### Env 4 - gardengrove
+
 パスワードの抽出
 ```bash
 export TS_G_ENV=alisoviejo
-export UAA_ADMIN_PASSWORD=$(cat ./${TS_G_ENV}.json | jq -r .pks_api.uaa_admin_password)
+export UAA_ADMIN_PASSWORD=$(cat ./config/${TS_G_ENV}.json | jq -r .pks_api.uaa_admin_password)
 echo $UAA_ADMIN_PASSWORD
 ```
 ログイン
@@ -36,10 +29,6 @@ pks create-cluster ${CLUSTER_NAME} --external-hostname ${CLUSTER_NAME}.${TS_G_EN
 ```
 クラスタの生成には30分程度かかります。下記を実行して状況を逐次確認します。
 ```bash
-watch -n 5 pks cluster $CLUSTER_NAME
-
-export CLUSTER_NAME=cluster-2
-pks create-cluster ${CLUSTER_NAME} --external-hostname cluster-1.${TS_G_ENV}.cf-app.com --plan small
 watch -n 5 pks cluster $CLUSTER_NAME
 ```
 
